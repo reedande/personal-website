@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Reed Anderson</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Contact Me</h1>
+    </header>
+    
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="resume.html">Resume</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <main>
+        <section class="contact-info">
+            <h2>Get in Touch</h2>
+            <p>Feel free to reach out through any of these platforms:</p>
+            <ul>
+                <li>Email: reedande@iu.edu</li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/reedandersoniu/" target="_blank">Click Here</a></li>
+                <li>GitHub: <a href="https://github.com/reedande" target="_blank">Click Here</a></li>
+            </ul>
+        </section>
+
+        <section class="contact-form">
+            <h2>Create Account</h2>
+            <form action="thankyou.html" method="POST" onsubmit="return validateForm()">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required
+                           aria-required="true">
+                    <span class="error" id="firstNameError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required
+                           aria-required="true">
+                    <span class="error" id="lastNameError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" required
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                           aria-required="true">
+                    <span class="error" id="emailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required
+                           minlength="8" 
+                           aria-required="true">
+                    <span class="error" id="passwordError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required
+                           minlength="8"
+                           aria-required="true">
+                    <span class="error" id="confirmPasswordError"></span>
+                </div>
+
+                <button type="submit">Create Account</button>
+            </form>
+        </section>
+
+        <script>
+            function validateForm() {
+                let isValid = true;
+                const password = document.getElementById('password');
+                const confirmPassword = document.getElementById('confirmPassword');
+                const firstName = document.getElementById('firstName');
+                const lastName = document.getElementById('lastName');
+                const email = document.getElementById('email');
+
+                // Reset error messages
+                document.querySelectorAll('.error').forEach(error => error.textContent = '');
+
+                // First Name validation
+                if (!firstName.value.trim()) {
+                    document.getElementById('firstNameError').textContent = 'First name is required';
+                    isValid = false;
+                }
+
+                // Last Name validation
+                if (!lastName.value.trim()) {
+                    document.getElementById('lastNameError').textContent = 'Last name is required';
+                    isValid = false;
+                }
+
+                // Email validation
+                if (!email.value.trim()) {
+                    document.getElementById('emailError').textContent = 'Email is required';
+                    isValid = false;
+                } else if (!email.validity.valid) {
+                    document.getElementById('emailError').textContent = 'Please enter a valid email address';
+                    isValid = false;
+                }
+
+                // Password validation
+                if (password.value.length < 8) {
+                    document.getElementById('passwordError').textContent = 'Password must be at least 8 characters long';
+                    isValid = false;
+                }
+
+                // Confirm Password validation
+                if (password.value !== confirmPassword.value) {
+                    document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
+                    isValid = false;
+                }
+
+                return isValid;
+            }
+        </script>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Reed Anderson. All rights reserved.</p>
+    </footer>
+</body>
+</html>
