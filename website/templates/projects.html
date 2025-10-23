@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Projects - Reed Anderson{% endblock %}
+
+{% block content %}
+<h2>Projects</h2>
+{% if projects %}
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for p in projects %}
+            <tr>
+                <td>{{ p.title }}</td>
+                <td>{{ p.description }}</td>
+                <td>
+                    {% if p.imageFileName %}
+                        <img src="{{ url_for('static', filename='images/' + p.imageFileName) }}" alt="{{ p.title }}" style="max-width:150px; height:auto;">
+                    {% else %}
+                        (no image)
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No projects yet. Add one via the contact (project submission) form.</p>
+{% endif %}
+{% endblock %}

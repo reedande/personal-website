@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}About Me - Reed Anderson{% endblock %}
+
+{% block content %}
+<section>
+    <img src="{{ url_for('static', filename='images/profile.jpeg') }}" alt="Reed Anderson" style="max-width: 300px; border-radius: 50%; margin: 2rem 0;">
+    
+    <h2>Background</h2>
+    <p>I was raised in Carmel Indiana where I attended Carmel High School.</p>
+    <p>I attended Indiana University where I majored in Finance.</p>
+    <p>I am currently pursuing a Master of Science in Information Systems (MSIS) with a focus on tech consulting.</p>
+
+    <h2>Interests</h2>
+    <p>I enjoy running, lifting, playing golf, and watching sports.</p>
+
+    <h2>Goals</h2>
+    <p>My goals are to deepen my knowledge in both the business and technology fields.</p>
+    <p>Landing myself in a career where I can utilize both.</p>
+</section>
+{% endblock %}

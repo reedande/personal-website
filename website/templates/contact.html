@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact - Reed Anderson{% endblock %}
+
+{% block content %}
+<section class="contact-info">
+    <h2>Get in Touch</h2>
+    <p>Feel free to reach out through any of these platforms:</p>
+    <ul>
+        <li>Email: reedande@iu.edu</li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/reedandersoniu/" target="_blank">Click Here</a></li>
+        <li>GitHub: <a href="https://github.com/reedande" target="_blank">Click Here</a></li>
+    </ul>
+</section>
+
+<section class="contact-form">
+    <h2>Submit a Project</h2>
+    <form action="{{ url_for('contact') }}" method="POST" onsubmit="return validateForm()">
+        <div class="form-group">
+            <label for="title">Project Title:</label>
+            <input type="text" id="title" name="title" required aria-required="true">
+            <span class="error" id="titleError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required aria-required="true"></textarea>
+            <span class="error" id="descriptionError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="imageFileName">Image File Name (place file in static/images):</label>
+            <input type="text" id="imageFileName" name="imageFileName" placeholder="project1.png">
+            <span class="error" id="imageFileNameError"></span>
+        </div>
+
+        <button type="submit">Add Project</button>
+    </form>
+</section>
+
+<script>
+    function validateForm() {
+        let isValid = true;
+        const title = document.getElementById('title');
+        const description = document.getElementById('description');
+
+        document.querySelectorAll('.error').forEach(error => error.textContent = '');
+
+        if (!title.value.trim()) {
+            document.getElementById('titleError').textContent = 'Title is required';
+            isValid = false;
+        }
+        if (!description.value.trim()) {
+            document.getElementById('descriptionError').textContent = 'Description is required';
+            isValid = false;
+        }
+
+        return isValid;
+    }
+</script>
+{% endblock %}

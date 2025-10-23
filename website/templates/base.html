@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Reed Anderson{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Reed Anderson</h1>
+  </header>
+
+  <nav>
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('about') }}">About Me</a>
+    <a href="{{ url_for('resume') }}">Resume</a>
+    <a href="{{ url_for('projects') }}">Projects</a>
+    <a href="{{ url_for('contact') }}">Contact</a>
+  </nav>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Reed Anderson. All rights reserved.</p>
+  </footer>
+</body>
+</html>
